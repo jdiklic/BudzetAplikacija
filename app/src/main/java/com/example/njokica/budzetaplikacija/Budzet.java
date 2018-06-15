@@ -83,7 +83,7 @@ public class Budzet extends AppCompatActivity {
 
 
         if(unosPodataka ){ //&& unosPod
-            toastMessage("Podaci su uspješno unešeni!");
+            toastMessage("Podaci su uspješno spremljeni!");
         }else{
             toastMessage("Nešto nije u redu!");
         }
