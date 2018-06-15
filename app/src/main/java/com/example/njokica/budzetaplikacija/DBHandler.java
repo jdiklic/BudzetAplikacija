@@ -64,4 +64,28 @@ public class DBHandler extends SQLiteOpenHelper {
         return data;
     }
 
+    public boolean deleteData1(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.remove(RED_iznos_budzeta);
+
+
+
+        long result_budzet = db.delete(TABLICA_BUDZET, null, null);
+
+        if(result_budzet == -1){
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public Cursor delete(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "DELETE FROM " + TABLICA_BUDZET;
+        Cursor data = db.rawQuery(query, null);
+        return data;
+    }
+
+
 }

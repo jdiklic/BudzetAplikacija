@@ -143,7 +143,7 @@ public class Trosak extends AppCompatActivity implements AdapterView.OnItemSelec
         boolean unosPodataka = myDb3.deleteData();
 
         if(unosPodataka){
-            toastMessage("Podaci su uspješno unešeni!");
+            toastMessage("Podaci su uspješno izbrisani!");
         }else{
             toastMessage("Nešto nije u redu!");
         }

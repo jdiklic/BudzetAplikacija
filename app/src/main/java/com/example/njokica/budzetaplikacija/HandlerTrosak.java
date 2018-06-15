@@ -55,6 +55,14 @@ public class HandlerTrosak extends SQLiteOpenHelper  {
     }
 
 
+
+    public Cursor getData3(){
+        SQLiteDatabase db3 = this.getWritableDatabase();
+//        String query3 = "DELETE FROM " + TABLICA_TROSAK;
+        String query3 = "SELECT * FROM " + TABLICA_TROSAK;
+        Cursor data3 = db3.rawQuery(query3, null);
+        return data3;
+    }
     public boolean deleteData(){
         SQLiteDatabase db3 = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -70,20 +78,6 @@ public class HandlerTrosak extends SQLiteOpenHelper  {
             return true;
         }
     }
-
-
-
-
-
-
-    public Cursor getData3(){
-        SQLiteDatabase db3 = this.getWritableDatabase();
-//        String query3 = "DELETE FROM " + TABLICA_TROSAK;
-        String query3 = "SELECT * FROM " + TABLICA_TROSAK;
-        Cursor data3 = db3.rawQuery(query3, null);
-        return data3;
-    }
-
     public Cursor delete(){
         SQLiteDatabase db3 = this.getWritableDatabase();
         String query4 = "DELETE FROM " + TABLICA_TROSAK;

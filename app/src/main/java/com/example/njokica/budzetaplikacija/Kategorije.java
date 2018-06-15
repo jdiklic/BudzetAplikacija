@@ -23,6 +23,7 @@ public class Kategorije extends AppCompatActivity  {
     HandlerKategorije myDb2;
     Button button4;
     EditText editText5;
+    Button button6;
     ListView listaKategorija;
 
     @Override
@@ -35,6 +36,7 @@ public class Kategorije extends AppCompatActivity  {
         button4 = (Button) findViewById(R.id.button4);
         listaKategorija = (ListView) findViewById(R.id.listaKategorija);
         myDb2 = new HandlerKategorije(this);
+        button6 = (Button) findViewById(R.id.button6);
 
 
 
@@ -60,6 +62,24 @@ public class Kategorije extends AppCompatActivity  {
         });
 
 
+        button6.setOnClickListener (new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                HandlerTrosak db3 = new HandlerTrosak(getApplicationContext());
+                deleteData2();
+
+
+                Intent intent = new Intent(Kategorije.this, IspisKategorija.class);
+                startActivity(intent);
+            }
+
+
+
+        });
+
+
+
     }
 
 
@@ -67,6 +87,16 @@ public class Kategorije extends AppCompatActivity  {
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
     }
 
+
+    public void deleteData2(){
+        boolean unosPodataka = myDb2.deleteData2();
+
+        if(unosPodataka){
+            toastMessage("Podaci su uspješno izbrisani!");
+        }else{
+            toastMessage("Nešto nije u redu!");
+        }
+    }
 
     public void AddData2(String noviUnos2){
         boolean unosPodataka = myDb2.addData2(noviUnos2);

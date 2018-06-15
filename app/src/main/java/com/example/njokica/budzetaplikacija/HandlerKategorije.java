@@ -83,4 +83,28 @@ public class HandlerKategorije extends SQLiteOpenHelper  {
     }
 
 
+    public boolean deleteData2(){
+        SQLiteDatabase db2 = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.remove(TABLICA_KATEGORIJA);
+
+
+
+        long result_kategorija = db2.delete(TABLICA_KATEGORIJA, null, null);
+
+        if(result_kategorija == -1){
+            return false;
+        } else {
+            return true;
+        }
+    }
+    public Cursor delete2(){
+        SQLiteDatabase db2 = this.getWritableDatabase();
+        String query2 = "DELETE FROM " + TABLICA_KATEGORIJA;
+
+        Cursor data2 = db2.rawQuery(query2, null);
+        return data2;
+    }
+
+
 }

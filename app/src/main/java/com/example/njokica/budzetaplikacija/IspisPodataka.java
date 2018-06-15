@@ -45,4 +45,21 @@ public class IspisPodataka extends AppCompatActivity {
     private void toastMessage(String message){
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
     }
+
+    public void isprazniListu() {
+        Log.d(DATABASE_NAME, "popuniListu: prikaz podataka");
+
+        Cursor data = myDb.delete();
+        ArrayList<String> listaPodataka = new ArrayList<>();
+        while (data.moveToNext()){
+            listaPodataka.remove(data.getString(1));
+        }
+        ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,listaPodataka);
+        listaView.setAdapter(adapter);
+
+
+
+    }
+
+
 }

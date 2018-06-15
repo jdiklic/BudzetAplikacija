@@ -23,6 +23,7 @@ public class Budzet extends AppCompatActivity {
 
     DBHandler myDb;
     Button button2;
+    Button button6;
     EditText editText3;
     ListView listaView;
     Spinner spinnerKategorije;
@@ -34,6 +35,7 @@ public class Budzet extends AppCompatActivity {
 
         editText3 = (EditText) findViewById(R.id.editText3);
         button2 = (Button) findViewById(R.id.button2);
+        button6 = (Button) findViewById(R.id.button6);
         listaView = (ListView) findViewById(R.id.listaView);
         myDb = new DBHandler(this);
         spinnerKategorije = (Spinner) findViewById(R.id.spinnerKategorije);
@@ -62,6 +64,28 @@ public class Budzet extends AppCompatActivity {
 
 
         });
+
+
+        button6.setOnClickListener (new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+                HandlerTrosak db3 = new HandlerTrosak(getApplicationContext());
+                deleteData1();
+
+
+
+
+                Intent intent = new Intent(Budzet.this, IspisPodataka.class);
+                startActivity(intent);
+            }
+
+
+
+        });
+
 // Spinner click listener
 
 
@@ -84,6 +108,16 @@ public class Budzet extends AppCompatActivity {
 
         if(unosPodataka ){ //&& unosPod
             toastMessage("Podaci su uspješno spremljeni!");
+        }else{
+            toastMessage("Nešto nije u redu!");
+        }
+    }
+
+    public void deleteData1(){
+        boolean unosPodataka = myDb.deleteData1();
+
+        if(unosPodataka){
+            toastMessage("Podaci su uspješno izbrisani!");
         }else{
             toastMessage("Nešto nije u redu!");
         }

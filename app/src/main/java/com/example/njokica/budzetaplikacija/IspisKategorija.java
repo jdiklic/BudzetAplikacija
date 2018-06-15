@@ -45,6 +45,22 @@ public class IspisKategorija extends AppCompatActivity  {
 
     }
 
+    public void isprazniListu2() {
+        Log.d(DATABASE_NAME, "isprazni listu: prikaz podataka");
+
+        Cursor data2 = myDb2.delete2();
+        ArrayList<String> listaKategorije = new ArrayList<>();
+        while (data2.moveToNext()){
+            listaKategorije.remove(data2.getString(1));
+        }
+        ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,listaKategorije);
+        listaKategorija.setAdapter(adapter);
+
+
+
+    }
+
+
 
     private void toastMessage(String message){
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
