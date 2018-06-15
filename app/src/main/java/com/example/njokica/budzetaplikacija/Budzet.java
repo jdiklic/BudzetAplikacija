@@ -44,7 +44,7 @@ public class Budzet extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String noviUnos = editText3.getText().toString()  + " kn" + " " +spinnerKategorije.getSelectedItem().toString() ;
+                String noviUnos = editText3.getText() + " kn" + " " +spinnerKategorije.getSelectedItem().toString() ;
                 //String noviUnos2 = spinner.getSelectedItem().toString();
 
                 if (editText3.length() != 0) {

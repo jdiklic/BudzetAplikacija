@@ -47,6 +47,25 @@ public class IspisTroskova extends AppCompatActivity {
     }
 
 
+
+
+    public void isprazniListu3() {
+        Log.d(DATABASE_NAME, "popuniListu: prikaz podataka");
+
+        Cursor data4 = myDb3.delete();
+        ArrayList<String> listaTroska = new ArrayList<>();
+        while (data4.moveToNext()){
+            listaTroska.remove(data4.getString(1));
+        }
+        ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,listaTroska);
+        listaTroskova.setAdapter(adapter);
+
+
+
+    }
+
+
+
     private void toastMessage(String message){
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
     }

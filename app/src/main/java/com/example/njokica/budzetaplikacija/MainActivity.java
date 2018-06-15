@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(k);
             return true;
         }  else if (id == R.id.nav_share) {
-            Intent u = new Intent(MainActivity.this, IspisUstedevina.class);
+            Intent u = new Intent(MainActivity.this, Ustedevina.class);
             startActivity(u);
             return true;
 

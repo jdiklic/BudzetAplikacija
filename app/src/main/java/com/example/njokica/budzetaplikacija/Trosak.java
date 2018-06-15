@@ -25,6 +25,7 @@ public class Trosak extends AppCompatActivity implements AdapterView.OnItemSelec
     DBHandler myDb;
     HandlerTrosak myDb3;
     Button button3;
+    Button button6;
     EditText editText4;
     ListView listaTroskova;
     Spinner spinnerKategorije;
@@ -41,6 +42,8 @@ public class Trosak extends AppCompatActivity implements AdapterView.OnItemSelec
         listaTroskova = (ListView) findViewById(R.id.listaTroskova);
         myDb = new DBHandler(this);
         myDb3 = new HandlerTrosak(this);
+        button6 = (Button) findViewById(R.id.button6);
+
 
 
         spinnerKategorije.setOnItemSelectedListener(this);
@@ -51,7 +54,7 @@ public class Trosak extends AppCompatActivity implements AdapterView.OnItemSelec
             public void onClick(View v) {
 
 
-                String noviUnos3 = editText4.getText().toString()+ " kn" + " " +spinnerKategorije.getSelectedItem().toString();
+                String noviUnos3 = editText4.getText()+ " kn" + " " +spinnerKategorije.getSelectedItem().toString();
 
                 if (editText4.length() != 0) {
                     HandlerTrosak db3 = new HandlerTrosak(getApplicationContext());
@@ -72,6 +75,36 @@ public class Trosak extends AppCompatActivity implements AdapterView.OnItemSelec
 
 
         });
+
+
+
+
+        button6.setOnClickListener (new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+                    HandlerTrosak db3 = new HandlerTrosak(getApplicationContext());
+                deleteData();
+                    editText4.setText("");
+                    loadSpinnerData();
+
+
+
+
+                Intent intent = new Intent(Trosak.this, IspisTroskova.class);
+                startActivity(intent);
+            }
+
+
+
+        });
+
+
+
+
+
 
 
 
@@ -96,6 +129,18 @@ public class Trosak extends AppCompatActivity implements AdapterView.OnItemSelec
 
     public void AddData3(String noviUnos3){
         boolean unosPodataka = myDb3.addData3(noviUnos3);
+
+        if(unosPodataka){
+            toastMessage("Podaci su uspješno unešeni!");
+        }else{
+            toastMessage("Nešto nije u redu!");
+        }
+    }
+
+
+
+    public void deleteData(){
+        boolean unosPodataka = myDb3.deleteData();
 
         if(unosPodataka){
             toastMessage("Podaci su uspješno unešeni!");

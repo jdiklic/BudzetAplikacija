@@ -23,6 +23,7 @@
         </activity>
         <activity android:name=".Budzet" />
         <activity android:name=".Trosak" />
+        <activity android:name=".Ustedevina" />
         <activity android:name=".IspisTroskova" />
         <activity android:name=".IspisPodataka" />
         <activity android:name=".IspisKategorija" />

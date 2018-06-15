@@ -37,21 +37,26 @@ public class HandlerUstedevina extends SQLiteOpenHelper {
 
     }
 
-    public Cursor addData4(){
-        SQLiteDatabase db4 = this.getWritableDatabase();
-       //String query4 = "INSERT INTO " + TABLICA_USTEDEVINA +"SELECT SUM"+ DBHandler.RED_iznos_budzeta +"from"+ DBHandler.TABLICA_BUDZET - HandlerTrosak.RED_naziv_troska +"FROM"+HandlerTrosak.TABLICA_TROSAK;
+    public boolean addData5(String item){
+        SQLiteDatabase db5 = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(RED_iznos_ustedevine, item);
 
+        Log.d(DATABASE_NAME, "dodaj podatke: dodavanje" + item + " u " + TABLICA_USTEDEVINA);
+        long result_trosak = db5.insert(TABLICA_USTEDEVINA, null, contentValues);
 
-        Cursor data4 = db4.rawQuery("SELECT SUM(DBHandler.RED_iznos_budzeta)-(SELECT SUM(HandlerTrosak.RED_naziv_troska) FROM HandlerTrosak.TABLICA_TROSAK) FROM DBHandler.TABLICA_BUDZET", null);
-
-        return data4;
+        if(result_trosak == -1){
+            return false;
+        } else {
+            return true;
+        }
     }
 
-    public Cursor getData4(){
-        SQLiteDatabase db4 = this.getWritableDatabase();
-        String query4 = "SELECT * FROM " + TABLICA_USTEDEVINA;
-        Cursor data4 = db4.rawQuery(query4, null);
-        return data4;
+    public Cursor getData5(){
+        SQLiteDatabase db5 = this.getWritableDatabase();
+        String query5 = "SELECT * FROM " + TABLICA_USTEDEVINA;
+        Cursor data5 = db5.rawQuery(query5, null);
+        return data5;
     }
 
 

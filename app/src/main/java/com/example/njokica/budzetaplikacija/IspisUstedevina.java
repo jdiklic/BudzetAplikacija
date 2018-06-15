@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class IspisUstedevina extends AppCompatActivity {
 
     private static final String DATABASE_NAME = "IspisUstedevinaActivity";
-    HandlerUstedevina myDb4;
+    HandlerUstedevina myDb5;
 
     private ListView listaUstedevina;
 
@@ -23,7 +23,7 @@ public class IspisUstedevina extends AppCompatActivity {
         setContentView(R.layout.lista_ustedevina);
 
         listaUstedevina = (ListView) findViewById(R.id.listaUstedevina);
-        myDb4 = new HandlerUstedevina(this);
+        myDb5 = new HandlerUstedevina(this);
 
         popuniListu();
     }
@@ -31,7 +31,7 @@ public class IspisUstedevina extends AppCompatActivity {
     public void popuniListu() {
         Log.d(DATABASE_NAME, "popuniListu: prikaz podataka");
 
-        Cursor data = myDb4.getData4();
+        Cursor data = myDb5.getData5();
         ArrayList<String> listaUstedevine = new ArrayList<>();
         while (data.moveToNext()){
             listaUstedevine.add(data.getString(1));
